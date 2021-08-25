@@ -5,8 +5,8 @@ This is a distributed transaction plugin of core.
 
 ## Support
 
-- [x] sagas
-Package sagas implements the orchestration based saga pattern.
+- [x] sagas <br>
+Package sagas implements the orchestration based saga pattern. <br>
 See https://microservices.io/patterns/data/saga.html
 
 - [ ] tcc
