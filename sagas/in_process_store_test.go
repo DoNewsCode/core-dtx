@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/DoNewsCode/core/dtx"
+	"github.com/DoNewsCode/core-dtx"
 	"github.com/stretchr/testify/assert"
 )
 

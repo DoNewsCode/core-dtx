@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/DoNewsCode/core"
-	"github.com/DoNewsCode/core/dtx"
-	"github.com/DoNewsCode/core/dtx/sagas"
+	"github.com/DoNewsCode/core-dtx"
+	"github.com/DoNewsCode/core-dtx/sagas"
 	"github.com/DoNewsCode/core/otgorm"
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"

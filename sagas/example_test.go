@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/DoNewsCode/core/dtx"
-	"github.com/DoNewsCode/core/dtx/sagas"
+	"github.com/DoNewsCode/core-dtx"
+	"github.com/DoNewsCode/core-dtx/sagas"
 )
 
 var orderTable = make(map[string]interface{})

@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/DoNewsCode/core/dtx"
+	"github.com/DoNewsCode/core-dtx"
 )
 
 // InProcessStore creates an in process storage that implements Store.

@@ -7,8 +7,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/DoNewsCode/core/dtx"
-	"github.com/DoNewsCode/core/dtx/sagas"
+	"github.com/DoNewsCode/core-dtx"
+	"github.com/DoNewsCode/core-dtx/sagas"
 	"gorm.io/gorm"
 )
 

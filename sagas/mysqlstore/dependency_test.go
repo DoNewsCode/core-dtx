@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/DoNewsCode/core"
-	"github.com/DoNewsCode/core/dtx/sagas"
+	"github.com/DoNewsCode/core-dtx/sagas"
 	"github.com/DoNewsCode/core/otgorm"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
