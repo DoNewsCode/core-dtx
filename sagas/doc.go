@@ -17,8 +17,8 @@ and a rollback counterpart. They must be registered beforehand by calling
 Registry.AddStep. A new endpoint will be returned to the caller. Use the
 returned endpoint to perform transactional operation.
 
-	store := sagas.NewInProcessStore()
-	registry := sagas.NewRegistry(store)
+	Store := sagas.NewInProcessStore()
+	registry := sagas.NewRegistry(Store)
 	addOrder := registry.AddStep(&sagas.Step{
 		Name: "Add Order",
 		Do: func(ctx context.Context, request interface{}) (response interface{}, err error) {

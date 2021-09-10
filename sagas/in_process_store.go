@@ -42,7 +42,7 @@ func (i *InProcessStore) Ack(ctx context.Context, logID string, err error) error
 	return nil
 }
 
-// Log appends a new unacknowledged log entry to the store.
+// Log appends a new unacknowledged log entry to the Store.
 func (i *InProcessStore) Log(ctx context.Context, log Log) error {
 	i.lock.Lock()
 	defer i.lock.Unlock()
@@ -62,14 +62,14 @@ func (i *InProcessStore) UnacknowledgedSteps(ctx context.Context, correlationID 
 	return i.unacknowledgedSteps(ctx, correlationID)
 }
 
-// UncommittedSagas searches the store for all uncommitted sagas, and return log entries under the matching sagas.
+// UncommittedSagas searches the Store for all uncommitted sagas, and return log entries under the matching sagas.
 func (i *InProcessStore) UncommittedSagas(ctx context.Context) ([]Log, error) {
 	i.lock.Lock()
 	defer i.lock.Unlock()
 
 	var logs []Log
 	for k := range i.transactions {
-		// For safety only. Memory store will not persist successfully finished transactions.
+		// For safety only. Memory Store will not persist successfully finished transactions.
 		if i.transactions[k][0].LogType == Session && !i.transactions[k][0].FinishedAt.IsZero() {
 			return []Log{}, nil
 		}

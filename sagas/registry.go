@@ -171,7 +171,7 @@ func (r *Registry) AddStep(step *Step) func(context.Context, interface{}) (inter
 	}
 }
 
-// Recover rollbacks all uncommitted sagas by retrieving them in the store.
+// Recover rollbacks all uncommitted sagas by retrieving them in the Store.
 func (r *Registry) Recover(ctx context.Context) {
 	logs, err := r.Store.UncommittedSagas(ctx)
 	if err != nil {
