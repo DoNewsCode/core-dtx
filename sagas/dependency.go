@@ -26,19 +26,7 @@ Providers returns a set of dependency providers.
 */
 func Providers(opts ...ProvidersOptionFunc) di.Deps {
 	option := providersOption{
-		storeConstructor: func(args StoreArgs) (Store, error) {
-			var storeHolder struct {
-				di.In
-				Store Store `optional:"true"`
-			}
-			if err := args.Populator.Populate(&storeHolder); err != nil {
-				return nil, err
-			}
-			if storeHolder.Store == nil {
-				storeHolder.Store = NewInProcessStore()
-			}
-			return storeHolder.Store, nil
-		},
+		storeConstructor: newDefaultStore,
 	}
 	for _, f := range opts {
 		f(&option)
@@ -72,9 +60,7 @@ type out struct {
 // provide creates a new saga module.
 func provide(option *providersOption) func(in in) (out, error) {
 	if option.storeConstructor == nil {
-		option.storeConstructor = func(args StoreArgs) (Store, error) {
-			return NewInProcessStore(), nil
-		}
+		option.storeConstructor = newDefaultStore
 	}
 	return func(in in) (out, error) {
 		var (
@@ -139,3 +125,19 @@ func (m out) ProvideRunGroup(group *run.Group) {
 func (m out) ModuleSentinel() {}
 
 func (m out) Module() interface{} { return m }
+
+func newDefaultStore(args StoreArgs) (Store, error) {
+
+	var storeHolder struct {
+		di.In
+		Store Store `optional:"true"`
+	}
+	if err := args.Populator.Populate(&storeHolder); err != nil {
+		return nil, err
+	}
+	if storeHolder.Store == nil {
+		storeHolder.Store = NewInProcessStore()
+	}
+	return storeHolder.Store, nil
+
+}
