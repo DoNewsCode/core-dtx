@@ -62,40 +62,40 @@ func timeout(duration time.Duration, g *run.Group) {
 	})
 }
 
-type fackStore struct{}
+type fakeStore struct{}
 
-func (f fackStore) Log(ctx context.Context, log Log) error {
+func (f fakeStore) Log(ctx context.Context, log Log) error {
 	panic("implement me")
 }
 
-func (f fackStore) Ack(ctx context.Context, id string, err error) error {
+func (f fakeStore) Ack(ctx context.Context, id string, err error) error {
 	panic("implement me")
 }
 
-func (f fackStore) UnacknowledgedSteps(ctx context.Context, correlationID string) ([]Log, error) {
+func (f fakeStore) UnacknowledgedSteps(ctx context.Context, correlationID string) ([]Log, error) {
 	panic("implement me")
 }
 
-func (f fackStore) UncommittedSagas(ctx context.Context) ([]Log, error) {
+func (f fakeStore) UncommittedSagas(ctx context.Context) ([]Log, error) {
 	panic("implement me")
 }
 
 func TestPreferStoreInDI(t *testing.T) {
 	g := di.NewGraph()
 	g.Provide(func() Store {
-		return fackStore{}
+		return fakeStore{}
 	})
 	driver, err := newDefaultStore(StoreArgs{
 		Populator: di.IntoPopulator(g),
 	})
 	assert.NoError(t, err)
-	assert.IsType(t, fackStore{}, driver)
+	assert.IsType(t, fakeStore{}, driver)
 }
 
 func TestPreferStoreInDI_error(t *testing.T) {
 	g := di.NewGraph()
 	g.Provide(func() (Store, error) {
-		return fackStore{}, errors.New("err")
+		return fakeStore{}, errors.New("err")
 	})
 	_, err := newDefaultStore(StoreArgs{
 		Populator: di.IntoPopulator(g),
