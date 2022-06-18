@@ -3,7 +3,7 @@ module github.com/DoNewsCode/core-dtx
 go 1.14
 
 require (
-	github.com/DoNewsCode/core v0.10.0
+	github.com/DoNewsCode/core v0.12.3
 	github.com/go-kit/kit v0.12.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/oklog/run v1.1.0
