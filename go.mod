@@ -11,5 +11,5 @@ require (
 	github.com/rs/xid v1.3.0
 	github.com/spf13/cobra v1.2.1
 	github.com/stretchr/testify v1.7.0
-	gorm.io/gorm v1.21.15
+	gorm.io/gorm v1.25.9
 )
